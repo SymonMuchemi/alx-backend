@@ -10,16 +10,16 @@ client.on("error", (err) => {
   console.log("Redis client not connected to the server: ", err);
 });
 
-async function setNewSchool(schoolName, value) {
+function setNewSchool(schoolName, value) {
   client.SET(schoolName, value, print);
 }
 
-async function displaySchoolValue(schoolName) {
+function displaySchoolValue(schoolName) {
   client.GET(schoolName, (err, value) => {
     console.log(value);
   });
 }
 
-await displaySchoolValue("ALX");
-await setNewSchool("ALXSanFrancisco", "100");
-await displaySchoolValue("ALXSanFrancisco");
+displaySchoolValue("ALX");
+setNewSchool("ALXSanFrancisco", "100");
+displaySchoolValue("ALXSanFrancisco");
